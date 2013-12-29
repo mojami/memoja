@@ -4,13 +4,13 @@
 
 ## インストール
 
-  $ git clone https://github.com/maku77/memoja.git
-  $ cd memoja
-  $ npm install
+    $ git clone https://github.com/maku77/memoja.git
+    $ cd memoja
+    $ npm install
 
 ## 起動方法
 
-  $ npm start
+    $ npm start
 
 ## その他メモ
 

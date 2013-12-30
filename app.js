@@ -1,8 +1,12 @@
+//
+// memoja
+//
+var api = require('./routes/api');
 var express = require('express');
 var path = require('path');
 var app = express();
 
-// App settings.
+// Express app settings.
 app.set('port', 3000);
 app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, 'views'));
@@ -23,12 +27,15 @@ app.get('/create', function(req, res) {
 });
 
 // Web APIs ================================================
-app.get('/api/memos', function(req, res) {
-    res.json([{title:'Title1'}, {title:'Title2'}]);
-});
+app.get('/api/memos', api.getMemoList);
+app.post('/api/memos', api.createMemo);
 
-app.post('/api/memos', function(req, res) {
-    // TODO: create a memo
-    res.redirect('/');
-});
+app.get('/api/memos/:id', api.getMemo);
+app.put('/api/memos/:id', api.modifyMemo);
+app.del('/api/memos/:id', api.deleteMemo);
 
+app.get('/api/tags', api.getTagList);
+app.post('/api/tags', api.createTag);
+
+app.put('/api/tags/:id', api.modifyTag);
+app.del('/api/tags/:id', api.deleteTag);

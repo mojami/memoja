@@ -2,9 +2,11 @@ var express = require('express');
 var path = require('path');
 var app = express();
 
+// App settings.
 app.set('port', 3000);
 app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Start the server.
 app.listen(app.get('port'), function() {
@@ -12,8 +14,8 @@ app.listen(app.get('port'), function() {
 });
 
 // Routes ==================================================
-app.get('/', function(req, res) {
-    res.render('index');
+app.get('/home', function(req, res) {
+    res.render('home');
 });
 
 app.get('/create', function(req, res) {

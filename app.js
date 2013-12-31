@@ -10,6 +10,9 @@ var app = express();
 app.set('port', 3000);
 app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(app.router);
+app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Start the server.
@@ -18,6 +21,10 @@ app.listen(app.get('port'), function() {
 });
 
 // Routes ==================================================
+app.get('/', function(req, res) {
+    res.render('index');
+});
+
 app.get('/home', function(req, res) {
     res.render('home');
 });

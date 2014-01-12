@@ -2,9 +2,13 @@ doctype html
 html
   head
     link(rel='stylesheet', href='stylesheets/memoja.css')
+    script(src='js/vendor/require.js', data-main='js/main.js')
   body
     h1 Memoja
     form(method='get', action='/memos')
       div
         input(type='search', name='search', placeholder='Search...', results=5, autosave='memoja.net').memoja-search
+      div#memoListBox
+        p Memos
+        ol#memoList
 

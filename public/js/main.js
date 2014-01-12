@@ -16,9 +16,19 @@ require.config({
   }
 });
 
-require(['jquery'], function($) {
+require(['jquery', 'MemojaApi'], function($, MemojaApi) {
+  'use strict';
   $(function() {
-    alert('Welcome to Memoja!');
+    MemojaApi.getMemoList(function(memos) {
+      updateMemoList(memos);
+    });
   });
+
+  function updateMemoList(memos) {
+    var $memoList = $('#memoList');
+    memos.forEach(function(memo) {
+      $memoList.append('<li>' + memo.title + ' (' + memo.created + ')');
+    });
+  }
 });
 

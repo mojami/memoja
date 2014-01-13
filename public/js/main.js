@@ -16,17 +16,15 @@ require.config({
   }
 });
 
-require(['jquery', 'Memo', 'MemojaApi'], function($, Memo, MemojaApi) {
+require(['jquery', 'Memo', 'MemojaApi', 'MemoView'],
+    function($, Memo, MemojaApi, MemoView) {
   'use strict';
   $(function() {
     MemojaApi.getMemoList(function(memos) {
       updateMemoList(memos);
     });
 
-    var memo = new Memo();
-    memo.fetch({
-        success: function() { console.log(memo); }
-    });
+    new MemoView();
   });
 
   function updateMemoList(memos) {

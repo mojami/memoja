@@ -8,7 +8,11 @@ html
     form(method='get', action='/memos')
       div
         input(type='search', name='search', placeholder='Search...', results=5, autosave='memoja.net').memoja-search
+
+      label Memo List
       div#memoListBox
-        p Memos
         ol#memoList
+
+      label MemoView
+      div#memoView
 

@@ -1,16 +1,19 @@
 exports.getMemoList = function(req, res) {
     res.json([
         {
+            id: "AAA",
             title: "Title1",
             content: "Content1",
             created: new Date()
         },
         {
+            id: "BBB",
             title: "Title2",
             content: "Content2",
             created: new Date()
         },
         {
+            id: "CCC",
             title: "Title3",
             content: "Content3",
             created: new Date()

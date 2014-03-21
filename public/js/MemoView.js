@@ -15,9 +15,11 @@ define(['backbone', 'Memo'], function(Backbone, Memo) {
             var title = this.model.get('title');
             var content = this.model.get('content');
             var created = this.model.get('created');
+            var updated = this.model.get('updated');
             var str = '<b>Title: </b>' + title +
                 '<br><b>Content: </b>' + content +
-                '<br><b>Created: </b>' + created;
+                '<br><b>Created: </b>' + created +
+                '<br><b>Updated: </b>' + updated;
             this.$el.html(str);
             return this;
         }

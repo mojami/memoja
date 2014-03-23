@@ -31,7 +31,7 @@ app.get('/create', function(req, res) {
 
 // Web APIs ================================================
 app.post('/api/memos', memos.createMemo);
-app.get('/api/memos', memos.readAllMemos);
+app.get('/api/memos', memos.searchMemo, memos.readAllMemos);
 app.get('/api/memos/:id', memos.readMemo);
 app.put('/api/memos/:id', memos.updateMemo);
 app.del('/api/memos/:id', memos.deleteMemo);

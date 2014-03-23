@@ -63,3 +63,12 @@ exports.deleteMemo = function (req, res) {
     });
 };
 
+// SEARCH
+exports.searchMemo = function (req, res, next) {
+    var keyword = req.query['s'];
+    if (keyword) {
+        res.send('SEARCH API (not implemented): ' + keyword);
+        return;
+    }
+    next();
+};

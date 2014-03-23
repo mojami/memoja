@@ -1,7 +1,7 @@
 /**
  * A route definition for /memos.
  */
-var memojadb = require('../lib/memojadb');
+var memojadb = require('../memojadb');
 
 // CREATE
 exports.createMemo = function (req, res) {

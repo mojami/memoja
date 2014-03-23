@@ -7,7 +7,7 @@
         "url" : "https://github.com/maku77/memoja.git"
     },
     "scripts": {
-        "start": "node app"
+        "start": "node server/app"
     },
     "dependencies": {
         "express": "*",

@@ -5,6 +5,7 @@ var memojadb = require('../lib/memojadb');
 
 // CREATE
 exports.createMemo = function (req, res) {
+    console.log('[API] Memo.createMemo');
     var memo = req.body;
     memojadb.Memo.create(memo, function (err) {
         if (err) {
@@ -17,6 +18,7 @@ exports.createMemo = function (req, res) {
 
 // READ (all)
 exports.readAllMemos = function (req, res) {
+    console.log('[API] Memo.readAllMemos');
     memojadb.Memo.find(function (err, memos) {
         if (err) {
             res.json({error: err.message});
@@ -29,6 +31,7 @@ exports.readAllMemos = function (req, res) {
 // READ (one)
 exports.readMemo = function (req, res) {
     var id = req.params.id;
+    console.log('[API] Memo.readMemo:', id);
     memojadb.Memo.findById(id, function (err, memo) {
         if (err) {
             res.json({error: err.message});
@@ -42,6 +45,7 @@ exports.readMemo = function (req, res) {
 exports.updateMemo = function (req, res) {
     var id = req.params.id;
     var memo = req.body;
+    console.log('[API] Memo.updateMemo:', id);
     memojadb.Memo.findByIdAndUpdate(id, memo, function (err) {
         if (err) {
             res.json({error: err.message});
@@ -54,6 +58,7 @@ exports.updateMemo = function (req, res) {
 // DELETE
 exports.deleteMemo = function (req, res) {
     var id = req.params.id;
+    console.log('[API] Memo.deleteMemo:', id);
     memojadb.Memo.findOneAndRemove({_id: id}, function (err) {
         if (err) {
             res.json({error: err.message});
@@ -66,8 +71,17 @@ exports.deleteMemo = function (req, res) {
 // SEARCH
 exports.searchMemo = function (req, res, next) {
     var keyword = req.query['s'];
+    console.log('[API] Memo.searchMemo:', keyword);
     if (keyword) {
-        res.send('SEARCH API (not implemented): ' + keyword);
+        var pattern = new RegExp(keyword, 'i');
+        memojadb.Memo.find({$or: [ {title: pattern}, {content: pattern} ]},
+                function (err, memos) {
+            if (err) {
+                res.json({error: err.message});
+                return;
+            }
+            res.json(memos);
+        });
         return;
     }
     next();

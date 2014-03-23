@@ -5,14 +5,14 @@ html
     script(src='js/vendor/require.js', data-main='js/main.js')
   body
     h1 Memoja
-    form(method='get', action='/memos')
+    form(method='get', action='/api/memos')
       div
         input(type='search', name='s', placeholder='Search...', results=5, autosave='memoja.net').memoja-search
 
-      label Memo List
-      div#memoListBox
-        ol#memoList
+    label Memo List
+    div#memoListBox
+      ol#memoList
 
-      label MemoView
-      div#memoView
+    label MemoView
+    div#memoView
 

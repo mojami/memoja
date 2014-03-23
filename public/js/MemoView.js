@@ -1,14 +1,15 @@
 define(['backbone', 'Memo'], function(Backbone, Memo) {
+    'use strict';
+
     var MemoView = Backbone.View.extend({
         el: '#memoView',
 
         initialize: function() {
-            var memo = new Memo();
-            this.model = memo;
-            this.model.on('change', this.render, this);
+            this.listenTo(this.model, 'change', this.render);
+            // TODO: this.stopListening()
 
             // Get content from the server.
-            memo.fetch();
+            this.model.fetch();
         },
 
         render: function() {

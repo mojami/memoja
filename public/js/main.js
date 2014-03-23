@@ -16,12 +16,12 @@ require.config({
     }
 });
 
-require(['jquery', 'MemoListView', 'MemoView'], function($, MemoListView, MemoView) {
+require(['jquery', 'AppRouter'], function($, AppRouter) {
     'use strict';
 
     $(function() {
-        new MemoListView();
-        new MemoView();
+        new AppRouter();
+        Backbone.history.start();
     });
 });
 

@@ -1,5 +1,12 @@
 define(['backbone', 'MemoCollection'], function(Backbone, MemoCollection) {
     'use strict';
+
+    function createListHtml(memo) {
+        var str = '<li><a href="#memos/' + memo.get('_id') + '">' +
+                memo.get('title') + ' (' + memo.get('created') + ')</a></li>';
+        return str;
+    }
+
     var MemoListView = Backbone.View.extend({
         el: '#memoList',
 
@@ -12,7 +19,7 @@ define(['backbone', 'MemoCollection'], function(Backbone, MemoCollection) {
         render: function() {
             var self = this;
             this.collection.forEach(function(memo) {
-                self.$el.append('<li>' + memo.get('title') + ' (' + memo.get('created') + ')');
+                self.$el.append(createListHtml(memo));
             });
             return this;
         }

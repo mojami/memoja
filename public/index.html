@@ -1,10 +1,84 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Memoja</title>
-</head>
-<body>
-  <h1>Memoja (^-^)</h1>
-  <script data-main="js/main.js" src="js/vendor/require.js"></script>
-</body>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEMOJA</title>
+    <link rel="stylesheet" href="stylesheets/foundation.css" />
+    <script src="js/vendor/modernizr-2.7.1.js"></script>
+  </head>
+  <body>
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name"><h1><a href="#">MEMOJA</a></h1></li>
+    </ul>
+    <section class="top-bar-section">
+      <ul class="right">
+        <li class="active"><a href="#">Add Memo</a></li>
+        <li><a href="#">Memo List</a></li>
+      </ul>
+    </section>
+  </nav>
+    <div id="addMemo" style="display:none">
+    <div class="row">
+      <div class="large-12 columns">
+        <h3>Add new memo</h3>
+      </div>
+    </div>
+      <form>
+        <div class="row">
+          <div class="large-12 columns">
+            <label><h5>Title:</h5></label>
+            <input type="text" placeholder="Enter title" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <label><h5>Description:</h5></label>
+            <textarea placeholder="Enter description"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-4 medium-4 columns">
+            <a href="#" class="small radius button">Save</a>
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+    <div id="listMemos" style="display:block">
+      <div class="row">
+        <div class="large-12 columns">
+          <h3>Memo list</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="panel">
+            <h5>Title:</h5>
+            <p>Show memo1 title.</p>
+            <h5>Description:</h5>
+            <p>Show memo1 description.</p>
+            <a href="#" class="small radius button">Edit</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="panel">
+            <h5>Title:</h5>
+            <p>Show memo2 title.</p>
+            <h5>Description:</h5>
+            <p>Show memo2 description.</p>
+            <a href="#" class="small radius button">Edit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/vendor/jquery-2.0.3.min.js"></script>
+    <script src="js/vendor/foundation-5.1.1.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
 </html>

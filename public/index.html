@@ -6,8 +6,11 @@
     <title>MEMOJA</title>
     <link rel="stylesheet" href="stylesheets/foundation.css" />
     <script src="js/vendor/modernizr-2.7.1.js"></script>
+    <script src="js/vendor/foundation-5.1.1.min.js"></script>
+    <script src="js/vendor/require.js" data-main="js/main.js"></script>
   </head>
   <body>
+
     <!-- [Page Header] Navigation bar -->
     <nav class="top-bar" data-topbar>
       <ul class="title-area">
@@ -15,66 +18,65 @@
       </ul>
       <section class="top-bar-section">
         <ul class="right">
-          <li class="active"><a href="#">Add Memo</a></li>
+          <li class="active"><a href="#create">Add Memo</a></li>
           <li><a href="#">Memo List</a></li>
         </ul>
       </section>
     </nav>
-    <!-- [Page1 Content] Add new memo -->
-    <div id="addMemo" style="display:none">
+
+    <!-- Main container - the content of this would be changed when a view get changed -->
+    <div id="mainContainer"></div>
+
+    <!-- [template] Show memo -->
+    <script type="text/template" id="templateShowMemo">
       <div class="row">
         <div class="large-12 columns">
-          <h3>Add new memo</h3>
-        </div>
-      </div>
-      <form>
-        <div class="row">
-          <div class="large-12 columns">
-            <label><h5>Title:</h5></label>
-            <input type="text" placeholder="Enter title" />
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-12 columns">
-            <label><h5>Description:</h5></label>
-            <textarea placeholder="Enter description"></textarea>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-4 medium-4 columns">
-            <a href="#" class="small radius button">Save</a>
-          </div>
-        </div>
-      </form>
-    </div>
-    <!-- [Page2 Content] Memo list -->
-    <div id="listMemos" style="display:block">
-      <div class="row">
-        <div class="large-12 columns">
-          <h3>Memo list</h3>
+          <h3>MemoView</h3>
         </div>
       </div>
       <div class="row">
         <div class="large-12 columns">
           <div class="panel">
-            <h5>Title:</h5><p>Show memo1 title.</p>
-            <h5>Description:</h5><p>Show memo1 description.</p>
+            <b>Title:</b><p><%- title %></p>
+            <b>Content:</b><p><%- content %></p>
+            <b>Created:</b><p><%- created %></p>
+            <b>Updated:</b><p><%- updated %></p>
             <a href="#" class="small radius button">Edit</a>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="large-12 columns">
-          <div class="panel">
-            <h5>Title:</h5><p>Show memo2 title.</p>
-            <h5>Description:</h5><p>Show memo2 description.</p>
-            <a href="#" class="small radius button">Edit</a>
+    </script>
+
+    <!-- [template] Create memo -->
+    <script type="text/template" id="templateCreateMemo">
+      <div>
+        <div class="row">
+          <div class="large-12 columns">
+            <h3>New memo</h3>
           </div>
         </div>
+        <form>
+          <div class="row">
+            <div class="large-12 columns">
+              <label><h5>Title:</h5></label>
+              <input type="text" placeholder="Enter title" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <label><h5>Description:</h5></label>
+              <textarea placeholder="Enter description"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-4 medium-4 columns">
+              <a href="#" class="small radius button">Save</a>
+            </div>
+          </div>
+        </form>
       </div>
-    </div>
-    <script src="js/vendor/jquery-2.0.3.min.js"></script>
-    <script src="js/vendor/foundation-5.1.1.min.js"></script>
+    </script>
+
     <script>
       $(document).foundation();
     </script>

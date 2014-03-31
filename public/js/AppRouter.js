@@ -1,18 +1,30 @@
-define(['backbone', 'Memo', 'MemoView', 'MemoListView'],
-function(Backbone, Memo, MemoView, MemoListView) {
+define(['backbone', 'Memo', 'MemoView', 'MemoListView', 'CreateView'],
+function(Backbone, Memo, MemoView, MemoListView, CreateView) {
     'use strict';
 
     return Backbone.Router.extend({
         routes: {
-            '': 'showIndex',
-            'memos/:id': 'showMemo'
+            '': 'showList',
+            'show/:id': 'showMemo',
+            'create': 'createMemo'
         },
-        showIndex: function () {
-            new MemoListView();
+        showList: function () {
+            this.changeView(new MemoListView());
         },
         showMemo: function (id) {
             var model = new Memo({id: id});
-            new MemoView({model: model});
+            this.changeView(new MemoView({model: model}));
+        },
+        createMemo: function () {
+            this.changeView(new CreateView());
+        },
+        changeView: function(view) {
+            // Remove event handlers and dom from the current view.
+            if (this.view) {
+                this.view.undelegateEvents();
+                this.view.remove();
+            }
+            this.view = view;
         }
     });
 });
